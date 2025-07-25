@@ -1,10 +1,17 @@
-document.getElementById('getQuote').addEventListener('click', () => {
-  fetch('/api/quote')
+document.getElementById('getSum').addEventListener('click', () => {
+  const a = document.getElementById('inputA').value;
+  const b = document.getElementById('inputB').value;
+
+  fetch(`/add?a=${a}&b=${b}`)
     .then(response => response.json())
     .then(data => {
-      document.getElementById('quoteDisplay').innerText = data.quote;
+      if (data.result !== undefined) {
+        document.getElementById('result').innerText = `Result: ${data.result}`;
+      } else {
+        document.getElementById('result').innerText = `Error: ${data.error}`;
+      }
     })
     .catch(error => {
-      console.error('Error fetching quote:', error);
+      document.getElementById('result').innerText = 'Server error';
     });
 });
