@@ -4,7 +4,6 @@ const PORT = 4000;
 
 app.use(express.static('public'));
 
-// /add endpoint
 app.get('/add', (req, res) => {
   const a = parseFloat(req.query.a);
   const b = parseFloat(req.query.b);
