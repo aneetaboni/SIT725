@@ -1,0 +1,9 @@
+<div class="grid two">
+  <label>Title <input required type="text" name="title" value="<%= book.title || '' %>"/></label>
+  <label>Author <input required type="text" name="author" value="<%= book.author || '' %>"/></label>
+  <label>ISBN <input type="text" name="isbn" value="<%= book.isbn || '' %>"/></label>
+  <label>Total Copies <input required type="number" min="0" name="copiesTotal" value="<%= book.copiesTotal || 1 %>"/></label>
+  <label>Available Copies <input required type="number" min="0" name="copiesAvailable" value="<%= book.copiesAvailable || 1 %>"/></label>
+  <label>Category <input type="text" name="category" value="<%= book.category || 'General' %>"/></label>
+  <label class="full">Summary <textarea name="summary" rows="3"><%= book.summary || '' %></textarea></label>
+</div>

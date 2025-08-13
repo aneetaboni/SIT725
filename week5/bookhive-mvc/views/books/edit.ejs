@@ -1,0 +1,7 @@
+<section class="card">
+  <h2>Edit Book</h2>
+  <form method="post" action="/books/<%= book._id %>">
+    <%- include("../partials/_book_form", { book }) %>
+    <button class="btn" type="submit">Save</button>
+  </form>
+</section>

@@ -1,0 +1,31 @@
+<section>
+  <h2>Books</h2>
+  <form method="get" action="/books" class="search">
+    <input type="text" name="q" value="<%= q %>" placeholder="Search by title"/>
+    <button class="btn" type="submit">Search</button>
+  </form>
+  <table class="table">
+    <thead>
+      <tr><th>Title</th><th>Author</th><th>ISBN</th><th>Available</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+      <% if (books.length === 0) { %>
+        <tr><td colspan="5">No books found.</td></tr>
+      <% } %>
+      <% books.forEach(b => { %>
+        <tr>
+          <td><strong><%= b.title %></strong></td>
+          <td><%= b.author %></td>
+          <td><%= b.isbn || "-" %></td>
+          <td><%= b.copiesAvailable %> / <%= b.copiesTotal %></td>
+          <td>
+            <a class="btn" href="/books/<%= b._id %>/edit">Edit</a>
+            <form style="display:inline" method="post" action="/books/<%= b._id %>/delete">
+              <button class="btn danger" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</section>
