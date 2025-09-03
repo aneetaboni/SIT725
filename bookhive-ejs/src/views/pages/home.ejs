@@ -1,9 +1,0 @@
-<% layout('layout') -%>
-<h2>Welcome to BookHive</h2>
-<p>Search, borrow, and manage library books online.</p>
-<div class="grid">
-  <a class="btn" href="/search">Start Searching</a>
-  <% if (!user) { %>
-    <div>Try a seeded login after seeding: <code>student@bookhive.local / password</code></div>
-  <% } %>
-</div>
