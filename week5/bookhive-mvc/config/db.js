@@ -1,11 +1,13 @@
-import mongoose from "mongoose";
+// config/db.js
+const mongoose = require('mongoose');
 
-const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/bookhive";
-
-mongoose.set("strictQuery", true);
-
-mongoose.connect(uri)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error("MongoDB connection error:", err));
-
-export default mongoose;
+module.exports = async () => {
+  const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/online_library';
+  try {
+    await mongoose.connect(uri, { serverSelectionTimeoutMS: 5000 });
+    console.log('MongoDB connected');
+  } catch (err) {
+    console.error('MongoDB connection error:', err.message);
+    process.exit(1);
+  }
+};

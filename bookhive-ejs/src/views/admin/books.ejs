@@ -1,0 +1,26 @@
+<% layout('../layout') -%>
+<h2>Admin — Books</h2>
+<div class="actions">
+  <a class="btn" href="/admin/books/new">+ New Book</a>
+</div>
+<table>
+  <thead>
+    <tr><th>Title</th><th>Author</th><th>ISBN</th><th>Status</th><th>Actions</th></tr>
+  </thead>
+  <tbody>
+    <% books.forEach(b => { %>
+      <tr>
+        <td><%= b.title %></td>
+        <td><%= b.author || '' %></td>
+        <td><%= b.isbn || '' %></td>
+        <td><%= b.available ? 'Available' : 'Borrowed' %></td>
+        <td class="actions">
+          <a class="btn secondary" href="/admin/books/<%= b._id %>/edit">Edit</a>
+          <form method="post" action="/admin/books/<%= b._id %>?_method=DELETE" style="display:inline;">
+            <button class="btn" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

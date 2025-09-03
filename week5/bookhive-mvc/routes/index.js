@@ -1,8 +1,9 @@
-import { Router } from "express";
-const router = Router();
+// routes/index.js
+const express = require('express');
+const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.render("index", { title: "BookHive" });
+router.get('/', (_req, res) => {
+  res.send('BookHive home'); // keep simple for now (no res.render needed)
 });
 
-export default router;
+module.exports = router;

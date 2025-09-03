@@ -1,0 +1,18 @@
+<header>
+  <h1>📚 <a href="/" style="text-decoration:none;color:#111827">BookHive</a></h1>
+  <nav>
+    <a href="/search">Search</a>
+    <% if (user && user.role === 'admin') { %>
+      <a href="/admin/books">Admin</a>
+    <% } %>
+    <% if (!user) { %>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    <% } else { %>
+      <a href="/profile">Profile</a>
+      <form action="/logout" method="post" style="display:inline;">
+        <button type="submit" class="btn secondary">Logout</button>
+      </form>
+    <% } %>
+  </nav>
+</header>

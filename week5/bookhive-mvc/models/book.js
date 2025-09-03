@@ -1,20 +1,14 @@
-import mongoose from "mongoose";
+// models/Book.js
+const { Schema, model } = require('mongoose');
 
-const bookSchema = new mongoose.Schema(
+const BookSchema = new Schema(
   {
-    title: { type: String, required: true, trim: true },
-    author: { type: String, required: true, trim: true },
-    isbn: { type: String, unique: true, sparse: true },
-    copiesTotal: { type: Number, required: true, min: 0 },
-    copiesAvailable: { type: Number, required: true, min: 0 },
-    category: { type: String, default: "General" },
-    summary: { type: String, trim: true }
+    title: { type: String, required: true, index: true, trim: true },
+    author: { type: String, required: true, index: true, trim: true },
+    category: { type: String, index: true, trim: true },
+    availableCopies: { type: Number, default: 1, min: 0 }
   },
   { timestamps: true }
 );
 
-bookSchema.virtual("isAvailable").get(function () {
-  return this.copiesAvailable > 0;
-});
-
-export default mongoose.model("Book", bookSchema);
+module.exports = model('Book', BookSchema);

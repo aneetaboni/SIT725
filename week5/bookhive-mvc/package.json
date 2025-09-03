@@ -1,33 +1,26 @@
 {
   "name": "bookhive-mvc",
   "version": "1.0.0",
-  "description": "BookHive: Online Library System (MVC - SIT725 Task 5.2C)",
+  "description": "SIT725 - BookHive MVC slice",
   "main": "server.js",
+  "type": "commonjs",
   "scripts": {
-    "dev": "nodemon server.js",
     "start": "node server.js",
-    "lint": "eslint ."
+    "dev": "nodemon server.js",
+    "test": "cross-env NODE_ENV=test mocha \"test/**/*.test.js\" --reporter spec --timeout 15000"
   },
-  "keywords": [
-    "mvc",
-    "express",
-    "mongoose",
-    "ejs",
-    "library",
-    "sit725"
-  ],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "ejs": "^3.1.9",
     "express": "^4.19.2",
-    "express-ejs-layouts": "^2.5.1",
-    "mongoose": "^8.5.3",
+    "mongoose": "^8.5.0",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "eslint": "^9.7.0",
-    "nodemon": "^3.1.4"
+    "chai": "^5.1.1",
+    "cross-env": "^7.0.3",
+    "mocha": "^10.6.0",
+    "nodemon": "^3.1.10",
+    "supertest": "^7.0.0"
   }
 }

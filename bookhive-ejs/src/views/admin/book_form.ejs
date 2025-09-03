@@ -1,0 +1,9 @@
+<% layout('../layout') -%>
+<h2><%= book ? 'Edit Book' : 'New Book' %></h2>
+<form method="post" action="<%= book ? '/admin/books/' + book._id + '?_method=PUT' : '/admin/books' %>" class="grid" style="max-width:520px;">
+  <input name="title" placeholder="Title" value="<%= book?.title || '' %>" required/>
+  <input name="author" placeholder="Author" value="<%= book?.author || '' %>"/>
+  <input name="isbn" placeholder="ISBN" value="<%= book?.isbn || '' %>"/>
+  <textarea name="description" rows="4" placeholder="Description"><%= book?.description || '' %></textarea>
+  <button class="btn" type="submit"><%= book ? 'Save changes' : 'Create book' %></button>
+</form>
